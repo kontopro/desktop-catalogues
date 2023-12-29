@@ -4,7 +4,10 @@
  */
 const nextConfig = {
   trailingSlash: true,
-  basePath: process.env.NODE_ENV === 'production'?'/Users/Public/e-catalogues':'',
+  // main BasePath
+  basePath: '',
+  // for Electron basePath
+  // basePath: '/Users/dad/code/electron-desktop-catalogues/out',
   output: 'export',
   images: { unoptimized: true },
    

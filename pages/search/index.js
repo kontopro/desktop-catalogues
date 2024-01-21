@@ -4,9 +4,10 @@ import { supabase } from '@/lib/supabaseClient';
 import Subnav from '@/components/Subnav';
 
 
-export default function Home( { allParts } ) {
+export default function Search( { allParts } ) {
 
     const [search, setSearch] = useState('')
+    console.log(allParts);
 
     const handleChange = (event) => {
     event.preventDefault();
@@ -59,7 +60,7 @@ export default function Home( { allParts } ) {
 export async function getStaticProps()  {
   
   const { data: allParts, error } = await supabase.from('part').select('id,ref_no,picture_no,name,nsn,pn,assembly(id,assid,parent_assid, catalogue(id,name,slug, kyrio(id,name,slug,category(id,slug))))');
-  // 
+  
   
   return {
     props: {

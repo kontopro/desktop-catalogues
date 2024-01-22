@@ -7,13 +7,12 @@ import Subnav from '@/components/Subnav';
 export default function Search( { allParts } ) {
 
     const [search, setSearch] = useState('')
-    console.log(allParts);
+    
 
     const handleChange = (event) => {
     event.preventDefault();
     const curr = event.target.value;
     setSearch(curr);
-    console.log(search);
   }
 
     return (
@@ -47,8 +46,9 @@ export default function Search( { allParts } ) {
                   <td>{x.name}</td>
                   <td>{x.assembly?x.assembly.catalogue.kyrio.name:''}</td>
                   <td>{x.assembly?x.assembly.catalogue.name:''}</td>
-                  <td><Link href={`${x.assembly.catalogue.kyrio.category.slug}/${x.assembly.catalogue.kyrio.slug}/${x.assembly.catalogue.slug}/tree/?assid=${x.assembly.assid}`}>{x.picture_no} &#8618;</Link></td>
-                  </tr>)}
+                  <td>{x.assembly?
+                    <Link href={`${x.assembly.catalogue.kyrio.category.slug}/${x.assembly.catalogue.kyrio.slug}/${x.assembly.catalogue.slug}/tree/?assid=${x.assembly.assid}`}>{x.picture_no} &#8618;</Link>
+                  :''}</td></tr>)}
                 </tbody>
                 </table>
 :''}
@@ -60,7 +60,6 @@ export default function Search( { allParts } ) {
 export async function getStaticProps()  {
   
   const { data: allParts, error } = await supabase.from('part').select('id,ref_no,picture_no,name,nsn,pn,assembly(id,assid,parent_assid, catalogue(id,name,slug, kyrio(id,name,slug,category(id,slug))))');
-  
   
   return {
     props: {

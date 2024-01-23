@@ -5,8 +5,6 @@ import { supabase } from "@/lib/supabaseClient"
 import Subnav from "@/components/Subnav"
 
 export default function Kyrio( { category, kyrio, ecats } ) {
-
-    
     
     return  <main className='main'>
                 <Subnav printbtn={false} aithshbtn={true} txt={`Διαθέσιμοι Ηλεκτρονικοί Κατάλογοι για το ΚΥ: ${kyrio.name}`} />                

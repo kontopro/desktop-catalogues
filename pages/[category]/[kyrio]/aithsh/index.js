@@ -12,7 +12,7 @@ export default function Aithsh(){
         <>
       <main className='aithsh'>
         <Subnav printbtn={true} aithshbtn={false} txt={`Προβολή Αίτησης`} />
-        <div className='no-mobile no-print'>
+        <div className='no-mobile no-print btn-aithsh-reset'>
             <button disabled={!aithsh.length} type="button" onClick={resetAithsh} >Καθαρισμός Αίτησης</button>
         </div>
       

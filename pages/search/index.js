@@ -8,9 +8,7 @@ export default function Search( { allParts } ) {
 
     const [search, setSearch] = useState('')
     // console.log(allParts)
-    const [filteredParts, setFilteredParts] = useState(allParts.slice(0, 100)); // Initial subset
 
-    
     const handleChange = (event) => {
     event.preventDefault();
     const curr = event.target.value;
@@ -22,7 +20,7 @@ export default function Search( { allParts } ) {
           <Subnav printbtn={false} aithshbtn={false} txt={`Αναζήτηση`} /> 
          <div className='search-wrapper'>
           <div className='search-title'>
-          {filteredParts.length?<p>Αναζητήστε Αριθμό Ονομαστικού ή Part Number</p>:null}
+          <p>Αναζητήστε Αριθμό Ονομαστικού ή Part Number</p>
           </div>
          <form className='search-form'>
           <input type='text' onChange={handleChange} placeholder='Πληκτρολογείστε τουλάχιστον 5 χαρακτήρες' name='ao'/>
@@ -63,11 +61,10 @@ export default function Search( { allParts } ) {
 export async function getStaticProps()  {
   
   const { data: allParts, error } = await supabase.from('part').select('id,ref_no,picture_no,name,nsn,pn,assembly(id,assid,parent_assid, catalogue(id,name,slug, kyrio(id,name,slug,category(id,slug))))'); 
-  // console.log(allParts)
+  
   return {
     props: {
         allParts,
-        
     }
   }    
 }

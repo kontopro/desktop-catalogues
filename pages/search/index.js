@@ -8,7 +8,7 @@ export default function Search( { allParts } ) {
 
     const [search, setSearch] = useState('')
     // console.log(allParts)
-    console.log(allParts)
+    // console.log(allParts)
 
     const handleChange = (event) => {
     event.preventDefault();

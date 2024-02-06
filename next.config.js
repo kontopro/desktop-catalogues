@@ -5,7 +5,7 @@
 const nextConfig = {
   trailingSlash: true,
   // main BasePath
-  basePath: '',
+  basePath: '/e-catalogues',
   // for Electron basePath
   // basePath: '/Users/dad/code/electron-desktop-catalogues/out',
   output: 'export',
